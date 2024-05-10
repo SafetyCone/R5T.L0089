@@ -73,6 +73,12 @@ namespace R5T.L0089.F000
             return output;
         }
 
+        public WasFound<T> Get_New_Found<T>(T value)
+            => WasFound.Found(value);
+
+        public WasFound<T> Get_New_NotFound<T>()
+            => WasFound.NotFound<T>();
+
         public T Get_Result_OrDefaultIfNotFound<T>(WasFound<T> wasFound)
         {
             var output = wasFound
