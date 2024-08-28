@@ -13,7 +13,7 @@ namespace R5T.L0089.T000
     /// </summary>
     /// <typeparam name="T">The type of the result.</typeparam>
     /// <remarks>
-    /// This is the same idea as suggested in Stack Overflow: https://stackoverflow.com/questions/18716928/how-to-write-a-async-method-with-out-parameter
+    /// This is the same idea as suggested in Stack Overflow: <see href="https://stackoverflow.com/questions/18716928/how-to-write-a-async-method-with-out-parameter"/>.
     /// </remarks>
     [UtilityTypeMarker]
     public class WasFound<T>
