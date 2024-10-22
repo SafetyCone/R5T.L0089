@@ -73,6 +73,17 @@ namespace R5T.L0089.F000
             return output;
         }
 
+        public WasFound<T> From<T>(
+            bool exists,
+            T value)
+        {
+            var output = new WasFound<T>(
+                exists,
+                value);
+
+            return output;
+        }
+
         public WasFound<T> Get_New_Found<T>(T value)
             => WasFound.Found(value);
 
@@ -195,10 +206,35 @@ namespace R5T.L0089.F000
             return output;
         }
 
-        public IEnumerable<WasFound<T>> Where_IsNotFound<T>(IEnumerable<WasFound<T>> wasFounds)
+        public WasFound<TValue> Get_WasFound<TKey, TValue>(
+            TKey key,
+            IDictionary<TKey, TValue> dictionary)
         {
-            var output = wasFounds
-                .Where(this.Is_NotFound)
+            var exists = dictionary.TryGetValue(
+                key,
+                out var value);
+
+            var output = this.From(exists, value);
+            return output;
+        }
+
+        public string To_Text<T>(
+            WasFound<T> wasFound,
+            Func<T, string> formatter)
+        {
+            var output = wasFound.Exists
+                ? formatter(wasFound.Result)
+                : Instances.Texts.Not_Found
+                ;
+
+            return output;
+        }
+
+        public string To_Text<T>(WasFound<T> wasFound)
+        {
+            var output = wasFound.Exists
+                ? wasFound.Result.ToString()
+                : Instances.Texts.Not_Found
                 ;
 
             return output;
@@ -208,6 +244,15 @@ namespace R5T.L0089.F000
         {
             var output = wasFounds
                 .Where(this.Is_Found)
+                ;
+
+            return output;
+        }
+
+        public IEnumerable<WasFound<T>> Where_IsNotFound<T>(IEnumerable<WasFound<T>> wasFounds)
+        {
+            var output = wasFounds
+                .Where(this.Is_NotFound)
                 ;
 
             return output;
