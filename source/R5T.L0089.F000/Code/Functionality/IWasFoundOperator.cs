@@ -5,6 +5,7 @@ using System.Linq;
 using R5T.T0132;
 
 using R5T.L0089.T000;
+using System.Threading.Tasks;
 
 
 namespace R5T.L0089.F000
@@ -35,6 +36,22 @@ namespace R5T.L0089.F000
             if (wasFound)
             {
                 var convertedResult = converterIfFound(wasFound.Result);
+
+                var output = WasFound.From(wasFound, convertedResult);
+                return output;
+            }
+            else
+            {
+                var output = WasFound.From(wasFound, default(TDestination));
+                return output;
+            }
+        }
+
+        public async Task<WasFound<TDestination>> Convert<TSource, TDestination>(WasFound<TSource> wasFound, Func<TSource, Task<TDestination>> converterIfFound)
+        {
+            if (wasFound)
+            {
+                var convertedResult = await converterIfFound(wasFound.Result);
 
                 var output = WasFound.From(wasFound, convertedResult);
                 return output;

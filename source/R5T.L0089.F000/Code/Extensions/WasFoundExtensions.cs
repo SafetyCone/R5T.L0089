@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 using R5T.L0089.T000;
 
@@ -35,6 +36,12 @@ namespace System
         }
 
         public static WasFound<TDestination> Convert<TSource, TDestination>(this WasFound<TSource> wasFound, Func<TSource, TDestination> converterIfFound)
+        {
+            var output = Instances.WasFoundOperator.Convert(wasFound, converterIfFound);
+            return output;
+        }
+
+        public static Task<WasFound<TDestination>> Convert<TSource, TDestination>(this WasFound<TSource> wasFound, Func<TSource, Task<TDestination>> converterIfFound)
         {
             var output = Instances.WasFoundOperator.Convert(wasFound, converterIfFound);
             return output;
