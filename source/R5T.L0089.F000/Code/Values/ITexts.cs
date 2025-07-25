@@ -3,7 +3,7 @@ using System;
 using R5T.T0131;
 
 
-namespace R5T.L0089.F000
+namespace R5T.L0089.F000 /// <see cref="R5T.L0089.F000.Documentation"/>
 {
     [ValuesMarker]
     public partial interface ITexts : IValuesMarker
