@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace R5T.L0089.F000
 {
+    [Obsolete("See D8S.S0015")]
     [FunctionalityMarker]
     public partial interface IWasFoundOperator : IFunctionalityMarker
     {

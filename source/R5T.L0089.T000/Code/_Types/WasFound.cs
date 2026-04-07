@@ -15,6 +15,7 @@ namespace R5T.L0089.T000
     /// <remarks>
     /// This is the same idea as suggested in Stack Overflow: <see href="https://stackoverflow.com/questions/18716928/how-to-write-a-async-method-with-out-parameter"/>.
     /// </remarks>
+    [Obsolete("See D8S.S0015")]
     [UtilityTypeMarker]
     public class WasFound<T>
     {
@@ -63,6 +64,8 @@ namespace R5T.L0089.T000
         }
     }
 
+
+    [Obsolete("See D8S.S0015")]
     public static class WasFound
     {
         public static WasFound<T> Found<T>(T value)
